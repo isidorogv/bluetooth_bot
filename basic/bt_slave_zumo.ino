@@ -1,11 +1,16 @@
+// Date: 08-mar-2017
+// Author: Isidoro Gayo
+// Name: Bluetooth zumo control
+// Filename: bt_slave_zumo.ino
+
 // -------------------------------------------------------------
-// Basic bluetooth controlled robot
+// Description: Basic bluetooth controlled robot
 // HC-06 is the slave module mounted on zumo bot
 // HC-05 is a master module wired on the UNO. A joystick
 // is also wired on the arduino.
 // 
 // Both BT modules must be configured before load the skechtes
-// This is the slave skecht to be loaded on zumo robot.
+// This is the slave sketch to be loaded on zumo robot.
 // -------------------------------------------------------------
 
 // Published under the terms of GNU/GPL v3.0 or higher license
@@ -16,19 +21,23 @@
 
 SoftwareSerial BTSerial(4,5); // RX | TX
 ZumoMotors motors;
+
+const int MAXSPEED=300;
+const int BAUDRATE=9600;
+bool DEBUG=true;
+
 int leftmotor,rightmotor;
 byte axis;
-bool DEBUG=true;
 
 
 void setup(){
   
-    Serial.begin(9600);
+    Serial.begin(BAUDRATE);
     if (DEBUG){
       Serial.println("Arduino with HC-06 is ready");
     }
     // HC-06 default baud rate is 9600
-    BTSerial.begin(9600);
+    BTSerial.begin(BAUDRATE);
     if (DEBUG){
       Serial.println("BTserial started at 9600");
     }
@@ -78,12 +87,12 @@ void botmove(byte coord,int val){
   if (coord==120){
     // RIGHT
     if (val<505){
-      bspeedleft=map(val,504,0,0,400);
+      bspeedleft=map(val,504,0,0,MAXSPEED);
       bspeedright=-bspeedleft;
     }
     // LEFT
     if (val>525){
-      bspeedleft=map(val,526,1026,0,-400);
+      bspeedleft=map(val,526,1026,0,-MAXSPEED);
       bspeedright=-bspeedleft;
     }
   }
@@ -101,7 +110,7 @@ void botmove(byte coord,int val){
       // int val must be mapped first from 
       // 0 for minimum speed(504 int value) to 400 max speed(0)
       // The robot must go backward at 'val' speed
-      bspeedleft=map(val,504,0,0,-400);
+      bspeedleft=map(val,504,0,0,-MAXSPEED);
       bspeedright=bspeedleft;
     }
     // FORWARD
@@ -109,7 +118,7 @@ void botmove(byte coord,int val){
       // int val variable must be mapped first within
       // 0 speed(526) to 400 maximun speed (1023-1026)
       // bot must go forward at 'val' speed
-      bspeedleft=map(val,526,1026,0,400);
+      bspeedleft=map(val,526,1026,0,MAXSPEED);
       bspeedright=bspeedleft;
     }
   }
