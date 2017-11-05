@@ -2,22 +2,10 @@
 What is that?
 ====
 
-A zumo-like robot controlled by means of a bluetooth link. Use this code to your own.
+Code samples to control a zumo-like robot by means of a wireless link. Use this code to your own.
+
+Control shown here can be done in 3 ways: by means of a bluetooth link (HC-05/HC-06 devices) , with a wifi link (ESP module) or using a RF device (nRF24L01). Nowadays there is only code for bluetooth modules. This is a work in progress and the rest of code will be uploaded asap.
+
 
 Published under GNU/GPL v3.0 or higher.
 
-This needs a zumo robot and a couple of bluetooth modules. For this test project, HC-05 (master) and HC-06 (slave) modules have been used. It also needs the zumo-shield library to control the zumo motors, and the Softserial library to emulate a serial port in order to allow debuging option.
-
-It performs in two ways, basic and enhanced. Watch the demo videos to note the differences.
-
-[Zumo BT demo 1.](https://youtu.be/KwbJjagYLGY)
-
-[Zumo BT demo 2.](https://youtu.be/FRAwHKxp5as)
-
-
-References
-=======
-
-http://www.martyncurrey.com/arduino-to-arduino-by-bluetooth/
-
-http://howtomechatronics.com/tutorials/arduino/how-to-configure-pair-two-hc-05-bluetooth-module-master-slave-commands/
