@@ -1,6 +1,6 @@
 // Date: 05-nov-2017
 // Author: Isidoro Gayo
-// Name: Bluetooth zumo control
+// Name: Wireless robot control
 // Filename: bt_master_dual_joy.ino
 
 // Description: Enhanced version of bluetooth controlled 

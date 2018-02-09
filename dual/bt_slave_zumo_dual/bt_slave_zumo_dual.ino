@@ -1,6 +1,6 @@
 // Date: 05-nov-2017
 // Author: Isidoro Gayo
-// Project: Bluetooth zumo control
+// Project: Wireless robot control
 // Filename: bt_slave_zumo_enh.ino
 
 // -------------------------------------------------------------
@@ -16,10 +16,10 @@
 // Published under the terms of GNU/GPL v3.0 or higher license
 
 
-#include <SoftwareSerial.h>
+//#include <SoftwareSerial.h>
 #include <ZumoMotors.h>
 
-SoftwareSerial BTSerial(4,5); // RX | TX
+//SoftwareSerial BTSerial(4,5); // RX | TX
 ZumoMotors motors;
 
 const int MAXSPEED=300;
@@ -41,7 +41,7 @@ void setup(){
       Serial.println("Arduino with HC-06 is ready");
     }
     // HC-06 default baud rate is 9600
-    BTSerial.begin(BAUDRATE);
+    //BTSerial.begin(BAUDRATE);
     if (DEBUG){
       Serial.print("BTserial started at ");
       Serial.println(BAUDRATE);
@@ -53,9 +53,9 @@ void loop(){
   byte recvalue;    // recieved byte value from bt module
   
   // Keep reading from HC-06 and 
-  if (BTSerial.available()){
+  if (Serial.available()){
     
-    recvalue=BTSerial.read();
+    recvalue=Serial.read();
 
     switch(recvalue){
       case 40:      // ( character recieved, packet start...

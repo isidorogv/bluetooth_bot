@@ -1,6 +1,6 @@
 // Date: 08-mar-2017
 // Author: Isidoro Gayo
-// Project: Bluetooth zumo control
+// Project: Wireless robot control
 // Filename: bt_slave_zumo_enh.ino
 
 // -------------------------------------------------------------
